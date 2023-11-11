@@ -15,6 +15,7 @@ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 // const Media = Me.imports.shared.media;
 import * as Media from '../shared/media.js';
+// import {MediaBox, Media} from '../shared/media.js';
 // const {PanelButton} = Me.imports.shared.panelButton;
 import { PanelButton } from '../shared/panelButton.js';
 

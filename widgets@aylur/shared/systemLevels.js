@@ -27,6 +27,10 @@ import { LevelBar } from './levelBar.js';
 // const {loadInterfaceXML} = imports.misc.fileUtils;
 import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
+const Me = () => {
+    return Extension.lookupByUUID("widgets@marko");
+};
+
 let hasGTop = true;
 try {
 } catch (e) {
@@ -343,7 +347,7 @@ class TempLevel extends UsageLevel {
 
         this.icon.icon_name = 'temperature-symbolic';
         this.icon.fallback_gicon = Gio.Icon.new_for_string(
-            `${Me.path}/media/temperature-symbolic.svg`
+            `${Me().metadata.path}/media/temperature-symbolic.svg`
         );
         this.hoverLabel.text = _('Temperature');
         this.colorSwitchValues = [50, 65, 80];

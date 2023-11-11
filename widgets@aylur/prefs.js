@@ -10,6 +10,9 @@ import GdkPixbuf from 'gi://GdkPixbuf';
 
 // const ExtensionUtils = imports.misc.extensionUtils;
 // const Me = ExtensionUtils.getCurrentExtension();
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+let Me = Extension.lookupByUUID('widgets@marko');
+
 import * as Pages from '../pref/pages.js';
 // const Pages = Me.imports.pref.pages;
 // const {SwitchRow} = Me.imports.pref.widgets;
@@ -80,14 +83,14 @@ class AboutPage extends Adw.PreferencesPage {
         const donateRow = new Adw.ActionRow();
         donateGroup.add(donateRow);
 
-        let pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me.path}/media/prefs/kofi.png`, -1, 50, true);
+        let pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me.metadata.path}/media/prefs/kofi.png`, -1, 50, true);
         let donateImage = Gtk.Picture.new_for_pixbuf(pixbuf);
         donateRow.add_prefix(new Gtk.LinkButton({
             child: donateImage,
             uri: 'https://ko-fi.com/aylur',
         }));
 
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me.path}/media/prefs/gnome-logo.png`, -1, 50, true);
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me.metadata.path}/media/prefs/gnome-logo.png`, -1, 50, true);
         donateImage = Gtk.Picture.new_for_pixbuf(pixbuf);
         donateRow.add_suffix(new Gtk.Label({
             label: _('Also consider donating to'),

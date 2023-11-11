@@ -16,7 +16,10 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 // const Me = imports.misc.extensionUtils.getCurrentExtension();
-//
+const Me = () => {
+    return Extension.lookupByUUID("widgets@marko");
+};
+
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
@@ -91,8 +94,8 @@ class WorkspacesIndicator extends PanelMenu.Button {
                     y_align: Clutter.ActorAlign.CENTER,
                     style_class: 'system-status-icon',
                     gicon: active
-                        ? Gio.icon_new_for_string(`${Me.path}/media/workspace-active-symbolic.svg`)
-                        : Gio.icon_new_for_string(`${Me.path}/media/workspace-symbolic.svg`),
+                        ? Gio.icon_new_for_string(`${Me().metadata.path}/media/workspace-active-symbolic.svg`)
+                        : Gio.icon_new_for_string(`${Me().metadata.path}/media/workspace-symbolic.svg`),
                 }));
             }
 

@@ -4,6 +4,7 @@ export { MyExtension };
 
 // const {GObject, St, Clutter, Gio, UPowerGlib: UPower} = imports.gi;
 
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import St from 'gi://St';
 import Clutter from 'gi://Clutter';
@@ -227,11 +228,29 @@ var MyExtension = class MyExtension {
 
     enable() {
         this._extension.enable();
-        this._stockIndicator.hide();
+        if (Main.panel.statusArea.quickSettings._system)
+            this._modifySystemItem();
+        else
+            this._queueModifySystemItem();
     }
 
     disable() {
         this._extension.disable();
         this._stockIndicator.show();
+    }
+
+    _modifySystemItem() {
+        this._stockIndicator = Main.panel.statusArea.quickSettings._system;
+        this._stockIndicator.hide();
+    }
+
+    _queueModifySystemItem() {
+        GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
+        if (!Main.panel.statusArea.quickSettings._system)
+            return GLib.SOURCE_CONTINUE;
+
+        this._modifySystemItem();
+        return GLib.SOURCE_REMOVE;
+      });
     }
 };

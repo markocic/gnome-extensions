@@ -1,5 +1,5 @@
 /* exported MediaBox */
-export {MediaBox};
+export {MediaBox, Media};
 
 // const {GObject, St, Gio, Clutter, Shell, GLib} = imports.gi;
 import GObject from 'gi://GObject';

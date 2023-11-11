@@ -831,9 +831,25 @@ var MyExtension = class MyExtension {
             this
         );
 
-        this.tweaks.reload();
+        if (Main.panel.statusArea.quickSettings._system && Main.panel.statusArea.quickSettings._volume)
+            this._modifySystemItem();
+        else
+            this._queueModifySystemItem();
+    }
 
+    _modifySystemItem() {
+        this.tweaks.reload();
         this.binding = Main.layoutManager.connect('monitors-changed', () => this.tweaks.reload());
+    }
+
+    _queueModifySystemItem() {
+        GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
+            if (!Main.panel.statusArea.quickSettings._system)
+                return GLib.SOURCE_CONTINUE;
+
+            this._modifySystemItem();
+            return GLib.SOURCE_REMOVE;
+        });
     }
 
     disable() {

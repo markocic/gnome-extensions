@@ -16,7 +16,6 @@ import GnomeDesktop from 'gi://GnomeDesktop';
 import Shell from 'gi://Shell';
 
 
-// const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 // const Main = imports.ui.main;
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
@@ -44,6 +43,12 @@ import * as SystemLevels from './systemLevels.js';
 
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+
+const Me = () => {
+    return Extension.lookupByUUID("widgets@marko");
+};
 
 const DashWidget = GObject.registerClass(
 class DashWidget extends St.BoxLayout {
@@ -324,7 +329,7 @@ class LinksWidget extends DashWidget {
         return new HoverButton(
             new St.Icon({
                 gicon: Gio.icon_new_for_string(
-                    `${Me.path}/media/${name}-symbolic.svg`
+                    `${Me().metadata.path}/media/${name}-symbolic.svg`
                 ),
                 icon_size: this._settings.get_int('dash-links-icon-size'),
             }),

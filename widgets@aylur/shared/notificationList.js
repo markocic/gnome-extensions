@@ -112,6 +112,20 @@ class DoNotDisturbSwitch extends PopupMenu.Switch {
     }
 });
 
+const Placeholder = GObject.registerClass(
+class Placeholder extends St.BoxLayout {
+    _init() {
+        super._init({style_class: 'message-list-placeholder', vertical: true});
+        this._date = new Date();
+
+        this._icon = new St.Icon({icon_name: 'no-notifications-symbolic'});
+        this.add_child(this._icon);
+
+        this._label = new St.Label({text: _('No Notifications')});
+        this.add_child(this._label);
+    }
+});
+
 var NotificationList = GObject.registerClass(
 class NotificationList extends St.BoxLayout {
     _init(dnd) {
@@ -122,7 +136,7 @@ class NotificationList extends St.BoxLayout {
             style_class: 'notification-list',
         });
 
-        this._placeholder = new Calendar.Placeholder();
+        this._placeholder = new Placeholder();
         this._placeholder.x_align = Clutter.ActorAlign.CENTER;
         this._placeholder.add_style_class_name('notifications-placeholder');
         this.add_child(this._placeholder);

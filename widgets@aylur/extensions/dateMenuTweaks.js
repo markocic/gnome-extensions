@@ -24,7 +24,7 @@ const DateMenu = Main.panel.statusArea.dateMenu;
 // const Media = Me.imports.shared.media;
 import * as Media from '../shared/media.js';
 // const {Avatar, Greetings, UserName} = Me.imports.shared.userWidget;
-import { Avatar, Greetings, UserName } from '../shared/userWidget';
+import { Avatar, Greetings, UserName } from '../shared/userWidget.js';
 // const SystemLevels = Me.imports.shared.systemLevels;
 import * as SystemLevels from '../shared/systemLevels.js';
 
