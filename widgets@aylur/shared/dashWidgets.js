@@ -1,18 +1,49 @@
 /* exported UserWidget LevelsWidget MediaWidget, LinksWidget, ClockWidget
             AppsWidget SettingsWidget SystemWidget */
 
-const {GObject, St, Clutter, GLib, Gio, GnomeDesktop, Shell} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-const Util = imports.misc.util;
-const AppFavorites = imports.ui.appFavorites;
-const Dash = imports.ui.dash;
-const {Avatar, Greetings, UserName} = Me.imports.shared.userWidget;
-const SystemActions = imports.misc.systemActions;
-const Media = Me.imports.shared.media;
-const SystemLevels = Me.imports.shared.systemLevels;
+export {UserWidget, LevelsWidget, MediaWidget, 
+        LinksWidget, ClockWidget, AppsWidget,
+        SettingsWidget, SystemWidget};
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const {GObject, St, Clutter, GLib, Gio, GnomeDesktop, Shell} = imports.gi;
+
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
+import Gio from 'gi://Gio';
+import GnomeDesktop from 'gi://GnomeDesktop';
+import Shell from 'gi://Shell';
+
+
+const Me = imports.misc.extensionUtils.getCurrentExtension();
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+// const Util = imports.misc.util;
+import * as Util from 'resource:///org/gnome/shell/misc/util.js';
+
+// const AppFavorites = imports.ui.appFavorites;
+import * as AppFavorites from 'resource:///org/gnome/shell/ui/appFavorites.js';
+
+// const Dash = imports.ui.dash;
+import * as Dash from 'resource:///org/gnome/shell/ui/dash.js';
+
+// const {Avatar, Greetings, UserName} = Me.imports.shared.userWidget;
+import {Avatar, Greetings, UserName} from './userWidget.js';
+
+// const SystemActions = imports.misc.systemActions;
+import * as SystemActions from 'resource:///org/gnome/shell/misc/systemActions.js';
+
+// const Media = Me.imports.shared.media;
+import * as Media from './media.js';
+
+// const SystemLevels = Me.imports.shared.systemLevels;
+import * as SystemLevels from './systemLevels.js';
+
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const DashWidget = GObject.registerClass(
 class DashWidget extends St.BoxLayout {

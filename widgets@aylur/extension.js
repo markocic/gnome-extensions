@@ -16,10 +16,38 @@
  */
 /* exported init */
 'use strict';
+import * as backgroundClock from './extensions/backgroundClock.js';
+import * as batteryBar from './extensions/batteryBar.js';
+import * as dashBoard from './extensions/dashBoard.js';
+import * as dateMenuTweaks from './extensions/dateMenuTweaks.js';
+import * as dynamicPanel from './extensions/dynamicPanel.js';
+import * as mediaPlayer from './extensions/mediaPlayer.js';
+import * as notificationIndicator from './extensions/notificationIndicator.js';
+import * as powerMenu from './extensions/powerMenu.js';
+import * as quickSettingsTweaks from './extensions/quickSettingsTweaks.js';
+import * as stylishOSD from './extensions/stylishOSD.js';
+import * as windowHeaderbar from './extensions/windowHeaderbar.js';
+import * as workspaceIndicator from './extensions/workspaceIndicator.js';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
+// const ExtensionUtils = imports.misc.extensionUtils;
+// const Me = ExtensionUtils.getCurrentExtension();
+
+const ExtensionImports = {
+    backgroundClock,
+    batteryBar,
+    dashBoard,
+    dateMenuTweaks,
+    mediaPlayer,
+    notificationIndicator,
+    powerMenu,
+    workspaceIndicator,
+    dynamicPanel,
+    windowHeaderbar,
+    quickSettingsTweaks,
+    stylishOSD
+}
 const Extensions = {
     backgroundClock: 'background-clock',
     batteryBar: 'battery-bar',
@@ -35,15 +63,18 @@ const Extensions = {
     stylishOSD: 'stylish-osd',
 };
 
-class Extension {
+export default class MyExtension extends Extension {
     enable() {
-        const settings = ExtensionUtils.getSettings();
+        const settings = this.getSettings();
 
+        let extensionIndex = 0;
         for (const extension in Extensions) {
             if (Object.hasOwnProperty.call(Extensions, extension)) {
                 const settings_key = Extensions[extension];
 
-                this[extension] = new Me.imports.extensions[extension].Extension(settings);
+                this[extension] = ExtensionImports[extensionIndex++];
+
+                // this[extension] = new Me.imports.extensions[extension].Extension(settings);
                 if (settings.get_boolean(settings_key))
                     this._toggleExtension(this[extension]);
 
@@ -79,6 +110,5 @@ class Extension {
 }
 
 function init() {
-    ExtensionUtils.initTranslations(Me.metadata.uuid);
-    return new Extension();
+    return new MyExtension();
 }

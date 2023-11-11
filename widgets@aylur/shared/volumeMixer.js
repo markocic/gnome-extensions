@@ -1,9 +1,19 @@
 /* exported VolumeMixer */
+export {VolumeMixer};
 
-const {Clutter, GObject, St, Gvc} = imports.gi;
-const Volume = imports.ui.status.volume;
-const Main = imports.ui.main;
-const {QuickSlider} = imports.ui.quickSettings;
+// const {Clutter, GObject, St, Gvc} = imports.gi;
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Gvc from 'gi://Gvc';
+
+// const Volume = imports.ui.status.volume;
+import * as Volume from 'resource:///org/gnome/shell/ui/status/volume.js';
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+// const {QuickSlider} = imports.ui.quickSettings;
+import {QuickSlider} from 'resource:///org/gnome/shell/ui/quickSettings.js';
 
 const ApplicationStreamSlider = GObject.registerClass(
 class ApplicationStreamSlider extends QuickSlider {

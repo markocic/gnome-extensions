@@ -1,6 +1,8 @@
 /* exported parseJson */
+export {parseJson};
 
-const {notify} = imports.ui.main;
+// const {notify} = imports.ui.main;
+import {notify} from 'resource:///org/gnome/shell/ui/main.js';
 
 const parentProperties = {
     x_align: 'int',

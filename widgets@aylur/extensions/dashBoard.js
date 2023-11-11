@@ -1,14 +1,32 @@
 /* exported Extension */
+export { MyExtension };
 
-const {GObject, St, Gio, Clutter, Meta, Shell} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-const PanelMenu = imports.ui.panelMenu;
-const Widgets = Me.imports.shared.dashWidgets;
-const ConfigParser = Me.imports.shared.dashConfigParser;
-const {PanelButton} = Me.imports.shared.panelButton;
+// const {GObject, St, Gio, Clutter, Meta, Shell} = imports.gi;
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Gio from 'gi://Gio';
+import Clutter from 'gi://Clutter';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+// const PanelMenu = imports.ui.panelMenu;
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+
+// const Widgets = Me.imports.shared.dashWidgets;
+// const ConfigParser = Me.imports.shared.dashConfigParser;
+import Widgets from '../shared/dashWidgets.js';
+import ConfigParser from '../shared/dashConfigParser.js';
+
+// const {PanelButton} = Me.imports.shared.panelButton;
+import {PanelButton} from '../shared/panelButton.js';
+
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const DashBoardModal = GObject.registerClass(
 class DashBoardModal extends imports.ui.modalDialog.ModalDialog {
@@ -230,7 +248,7 @@ class DashBoardPanelButton extends PanelMenu.Button {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._settings = settings;
         this._extension = new PanelButton({

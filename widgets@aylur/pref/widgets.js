@@ -1,11 +1,27 @@
 /* exported SpinButtonRow EntryRow DropDownRow SwitchRow ColorRow
             ExpanderRow PositionRow FileChooserButton HotkeyDialog */
 
-const {Adw, Gio, Gtk, GObject, Gdk, GdkPixbuf} = imports.gi;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+export {
+    SpinButtonRow, EntryRow, DropDownRow,
+    SwitchRow, ColorRow, ExpanderRow,
+    PositionRow, FileChooserButton, HotkeyDialog,
+};
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const {Adw, Gio, Gtk, GObject, Gdk, GdkPixbuf} = imports.gi;
+
+import Adw from 'gi://Adw';
+import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gdk from 'gi://Gdk';
+import GdkPixbuf from 'gi://GdkPixbuf';
+
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+// const ExtensionUtils = imports.misc.extensionUtils;
+// const Me = ExtensionUtils.getCurrentExtension();
+//
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+
 
 var SpinButtonRow = GObject.registerClass(
 class SpinButtonRow extends Adw.ActionRow {

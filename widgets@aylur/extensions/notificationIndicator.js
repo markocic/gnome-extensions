@@ -1,10 +1,23 @@
 /* exported Extension */
 
-const {GObject, St, Clutter, Gio} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-const PanelMenu = imports.ui.panelMenu;
-const {NotificationList} = Me.imports.shared.notificationList;
+export {MyExtension};
+
+// const {GObject, St, Clutter, Gio} = imports.gi;
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+// const PanelMenu = imports.ui.panelMenu;
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+
+// const {NotificationList} = Me.imports.shared.notificationList;
+import { NotificationList } from '../shared/notificationList';
 
 const IconsIndicator = GObject.registerClass(
 class IconsIndicator extends St.BoxLayout {
@@ -178,7 +191,7 @@ class PanelButton extends PanelMenu.Button {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._settings = settings;
         this._pos = [

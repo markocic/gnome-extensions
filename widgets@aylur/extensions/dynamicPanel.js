@@ -1,10 +1,18 @@
 /* exported Extension */
+export {MyExtension};
 
-const {St, Meta} = imports.gi;
-const Main = imports.ui.main;
+// const {St, Meta} = imports.gi;
+import St from 'gi://St';
+import Meta from 'gi://Meta';
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
 const Panel = Main.panel;
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._settings = settings;
     }

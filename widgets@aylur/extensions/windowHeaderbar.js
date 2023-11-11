@@ -1,7 +1,13 @@
 /* exported Extension */
+export {MyExtension};
 
 const {Meta} = imports.gi;
-const Util = imports.misc.util;
+import Meta from 'gi://Meta';
+
+// const Util = imports.misc.util;
+import * as Util from 'resource:///org/gnome/shell/misc/util.js';
+
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 class Window {
     constructor(window) {
@@ -39,7 +45,7 @@ class Window {
     }
 }
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     enable() {
         this._windows = new Map();
 

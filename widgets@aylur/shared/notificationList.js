@@ -1,15 +1,33 @@
-/* exported NotificationList */
+/* exported NotificationList */ 
+
+export { NotificationList };
 
 const {GObject, St, Clutter, Gio} = imports.gi;
-const Main = imports.ui.main;
-const Calendar = imports.ui.calendar;
-const MessageList = imports.ui.messageList;
-const MessageTray = imports.ui.messageTray;
-const PopupMenu = imports.ui.popupMenu;
-const Util = imports.misc.util;
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
+
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+// const Calendar = imports.ui.calendar;
+import * as Calendar from 'resource:///org/gnome/shell/ui/calendar.js';
+// const MessageList = imports.ui.messageList;
+import * as MessageList from 'resource:///org/gnome/shell/ui/messageList.js';
+// const MessageTray = imports.ui.messageTray;
+import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
+// const PopupMenu = imports.ui.popupMenu;
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+// const Util = imports.misc.util;
+import * as Util from 'resource:///org/gnome/shell/misc/util.js';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const NotificationSection = GObject.registerClass(
 class NotificationSection extends MessageList.MessageListSection {

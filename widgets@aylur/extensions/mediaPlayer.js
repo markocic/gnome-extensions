@@ -1,11 +1,22 @@
 /* exported Extension */
+export {MyExtension};
 
-const {GObject, St, Clutter} = imports.gi;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const PanelMenu = imports.ui.panelMenu;
-const Media = Me.imports.shared.media;
-const {PanelButton} = Me.imports.shared.panelButton;
+// const {GObject, St, Clutter} = imports.gi;
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+
+// const ExtensionUtils = imports.misc.extensionUtils;
+// const Me = ExtensionUtils.getCurrentExtension();
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+// const PanelMenu = imports.ui.panelMenu;
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+
+// const Media = Me.imports.shared.media;
+import * as Media from '../shared/media.js';
+// const {PanelButton} = Me.imports.shared.panelButton;
+import { PanelButton } from '../shared/panelButton.js';
 
 const MediaBox = GObject.registerClass(
 class MediaBox extends Media.MediaBox {
@@ -214,7 +225,7 @@ class MediaControls extends PanelMenu.Button {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._signals = [
             'media-player-offset',

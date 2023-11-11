@@ -3,17 +3,39 @@
             WorkspaceIndicatorPage NotificationIndicatorPage
             BackgroundClockPage QuickSettingsTweaksPage */
 
-const {Adw, Gio, Gtk, GObject, GLib} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const {
+export { BatteryBarPage, DashBoardPage, DateMenuTweakPage,
+            DynamicPanelPage, MediaPlayerPage, PowerMenuPage, StylishOSDPage,
+            WorkspaceIndicatorPage, NotificationIndicatorPage,
+            BackgroundClockPage, QuickSettingsTweaksPage };
+
+// const {Adw, Gio, Gtk, GObject, GLib} = imports.gi;
+import Adw from 'gi://Adw';
+import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import GLib from 'gi://GLib';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// import SpinButtonRow from './widgets.js';
+// import EntryRow from './widgets.js';
+// import DropDownRow from './widgets.js';
+// import SwitchRow from './widgets.js';
+// import ColorRow from './widgets.js';
+// import ExpanderRow from './widgets.js';
+// import PositionRow from './widgets.js';
+// import FileChooserButton from './widgets.js';
+// import HotkeyDialog from './widgets.js';
+import {
     SpinButtonRow, EntryRow, DropDownRow,
     SwitchRow, ColorRow, ExpanderRow,
     PositionRow, FileChooserButton, HotkeyDialog,
-} = Me.imports.pref.widgets;
+} from './widgets.js';
 
-const {wsNamesGroup} = Me.imports.pref.workspaces;
+// const {wsNamesGroup} = Me.imports.pref.workspaces;
+import { wsNamesGroup } from './workspaces.js';
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 
 const MEDIA_CACHE = `${GLib.get_user_cache_dir()}/aylur/media`;
 const MEDIA_SUBTITLE = _("Doesn't work with every media player");

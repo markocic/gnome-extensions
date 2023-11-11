@@ -1,8 +1,17 @@
 /* exported Avatar, UserName, Greetings */
 
+export {Avatar, UserName, Greetings};
+
 const {GLib, St, AccountsService, GObject} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+
+import GLib from 'gi://GLib';
+import St from 'gi://St';
+import AccountsService from 'gi://AccountsService';
+import GObject from 'gi://GObject';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 var Avatar = ({radius, fallbackSize, styleClass} = {}) => {
     const icon = AccountsService.UserManager.get_default().list_users()

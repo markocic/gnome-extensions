@@ -1,13 +1,32 @@
 /* exported Extension */
 
-const {GObject, St, Clutter, Gio, UPowerGlib: UPower} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-const PanelMenu = imports.ui.panelMenu;
-const {LevelBar} = Me.imports.shared.levelBar;
-const {PanelButton} = Me.imports.shared.panelButton;
+export { MyExtension };
 
-const {loadInterfaceXML} = imports.misc.fileUtils;
+const {GObject, St, Clutter, Gio, UPowerGlib: UPower} = imports.gi;
+
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
+import UPower from 'gi://UPowerGlib';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+// const PanelMenu = imports.ui.panelMenu;
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+// const {LevelBar} = Me.imports.shared.levelBar;
+import {LevelBar} from '../shared/levelBar.js';
+// const {PanelButton} = Me.imports.shared.panelButton;
+import {PanelButton} from '../shared/panelButton.js';
+
+// const {loadInterfaceXML} = imports.misc.fileUtils;
+import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtls.js';
+import { Extension } from './backgroundClock.js';
+
 const DisplayDeviceInterface = loadInterfaceXML('org.freedesktop.UPower.Device');
 const PowerManagerProxy = Gio.DBusProxy.makeProxyWrapper(DisplayDeviceInterface);
 
@@ -193,7 +212,7 @@ class BatteryBar extends PanelMenu.Button {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._extension = new PanelButton({
             settings,

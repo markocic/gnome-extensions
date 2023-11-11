@@ -1,8 +1,23 @@
 /* exported Extension */
+export { MyExtension };
 
-const {Clutter, GObject, GLib, St, Meta, GnomeDesktop} = imports.gi;
-const Background = imports.ui.background;
-const Main = imports.ui.main;
+// const {Clutter, GObject, GLib, St, Meta, GnomeDesktop} = imports.gi;
+import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
+import St from 'gi://St';
+import GObject from 'gi://GObject';
+import Meta from 'gi://Meta';
+import GnomeDesktop from 'gi://GnomeDesktop';
+
+
+
+// const Background = imports.ui.background;
+import * as Background from 'resource:///org/gnome/shell/ui/background.js';
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const ClockWidget = GObject.registerClass(
 class ClockWidget extends St.BoxLayout {
@@ -235,7 +250,7 @@ class BackgroundClock extends St.Widget {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._settings = settings;
         this._bgManagerProto = Background.BackgroundManager.prototype;

@@ -1,11 +1,22 @@
 /* exported MediaBox */
+export {MediaBox};
 
-const {GObject, St, Gio, Clutter, Shell, GLib} = imports.gi;
-const {Slider} = imports.ui.slider;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+// const {GObject, St, Gio, Clutter, Shell, GLib} = imports.gi;
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
+import Gio from 'gi://Gio';
+import Shell from 'gi://Shell';
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const {Slider} = imports.ui.slider;
+import {Slider} from 'resource:///org/gnome/shell/ui/slider.js';
+
+// const ExtensionUtils = imports.misc.extensionUtils;
+// const Me = ExtensionUtils.getCurrentExtension();
+//
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const CACHE_PATH = `${GLib.get_user_cache_dir()}/aylur`;
 const MEDIA_CACHE = `${CACHE_PATH}/media/`;

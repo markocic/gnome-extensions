@@ -1,6 +1,8 @@
 /* exported PanelButton */
+export { PanelButton };
 
-const Main = imports.ui.main;
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 var PanelButton = class PanelButton {
     constructor({settings, indicator, signals, name}) {

@@ -1,15 +1,24 @@
 /* exported init fillPreferencesWindow */
 
-const {Adw, Gtk, Gio, GObject, GdkPixbuf} = imports.gi;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const Pages = Me.imports.pref.pages;
-const {SwitchRow} = Me.imports.pref.widgets;
+export { fillPreferencesWindow };
+// const {Adw, Gtk, Gio, GObject, GdkPixbuf} = imports.gi;
+import Adw from 'gi://Adw';
+import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import GdkPixbuf from 'gi://GdkPixbuf';
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const ExtensionUtils = imports.misc.extensionUtils;
+// const Me = ExtensionUtils.getCurrentExtension();
+import * as Pages from '../pref/pages.js';
+// const Pages = Me.imports.pref.pages;
+// const {SwitchRow} = Me.imports.pref.widgets;
+import * as SwitchRow from '../pref/widgets.js';
+
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 
 function init() {
-    ExtensionUtils.initTranslations(Me.metadata.uuid);
 }
 
 const ToggleRow = GObject.registerClass(
@@ -126,9 +135,13 @@ class MainPage extends Adw.PreferencesPage {
     }
 });
 
-function fillPreferencesWindow(window) {
-    window.add(new MainPage());
-    window.add(new AboutPage());
-    window.search_enabled = true;
-    window.can_navigate_back = true;
+export default class MyExtensionPreferences extends ExtensionPreferences  {
+    fillPreferencesWindow(window) {
+        window._settings = this.getSettings();
+        window.add(new MainPage());
+        window.add(new AboutPage());
+        window.search_enabled = true;
+        window.can_navigate_back = true;
+    }
+
 }

@@ -1,6 +1,13 @@
 /* exported LevelBar */
+export {LevelBar};
 
 const {Clutter, St, GObject, GLib} = imports.gi;
+
+
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
 
 var LevelBar = GObject.registerClass(
 class LevelBar extends St.BoxLayout {

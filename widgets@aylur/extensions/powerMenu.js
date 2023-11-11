@@ -1,14 +1,26 @@
 /* exported Extension */
+export {MyExtension}
 
-const {GObject, St, Clutter} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-const SystemActions = imports.misc.systemActions;
-const ModalDialog = imports.ui.modalDialog;
-const PanelMenu = imports.ui.panelMenu;
-const {PanelButton} = Me.imports.shared.panelButton;
+// const {GObject, St, Clutter} = imports.gi;
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import Clutter from 'gi://Clutter';
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+// const SystemActions = imports.misc.systemActions;
+import * as SystemActions from 'resource:///org/gnome/shell/misc/systemActions.js';
+// const ModalDialog = imports.ui.modalDialog;
+import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
+// const PanelMenu = imports.ui.panelMenu;
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/PanelMenu.js';
+// const {PanelButton} = Me.imports.shared.panelButton;
+import { PanelButton } from '../shared/panelButton';
 
 const PowerButton = GObject.registerClass(
 class PowerButton extends St.Button {
@@ -197,7 +209,7 @@ class PowerMenu extends PanelMenu.Button {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._extension = new PanelButton({
             settings,

@@ -1,15 +1,32 @@
 /* exported Extension */
 
-const {St, GObject, Clutter, Pango, GLib, GnomeDesktop, Shell} = imports.gi;
-const Main = imports.ui.main;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const DateMenu = Main.panel.statusArea.dateMenu;
-const Media = Me.imports.shared.media;
-const {Avatar, Greetings, UserName} = Me.imports.shared.userWidget;
-const SystemLevels = Me.imports.shared.systemLevels;
+export {MyExtension};
 
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+// const {St, GObject, Clutter, Pango, GLib, GnomeDesktop, Shell} = imports.gi;
+import St from 'gi://St';
+import GObject from 'gi://GObject';
+import Clutter from 'gi://Clutter';
+import Pango from 'gi://Pango';
+import GLib from 'gi://GLib';
+import GnomeDesktop from 'gi://GnomeDesktop';
+import Shell from 'gi://Shell';
+
+
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+// const ExtensionUtils = imports.misc.extensionUtils;
+// const Me = ExtensionUtils.getCurrentExtension();
+// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+const DateMenu = Main.panel.statusArea.dateMenu;
+// const Media = Me.imports.shared.media;
+import * as Media from '../shared/media.js';
+// const {Avatar, Greetings, UserName} = Me.imports.shared.userWidget;
+import { Avatar, Greetings, UserName } from '../shared/userWidget';
+// const SystemLevels = Me.imports.shared.systemLevels;
+import * as SystemLevels from '../shared/systemLevels.js';
+
 
 const LevelsBox = GObject.registerClass(
 class LevelsBox extends SystemLevels.LevelsBox {
@@ -206,7 +223,7 @@ class CustomMenu extends St.BoxLayout {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._settings = settings;
         this._panelBox = [

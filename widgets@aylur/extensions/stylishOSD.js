@@ -1,11 +1,26 @@
 /* exported Extension */
+export {MyExtension};
 
-const {Clutter, GObject, St, GLib, Meta} = imports.gi;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-const {OsdWindowManager} = imports.ui.osdWindow;
-const {LevelBar} = Me.imports.shared.levelBar;
-const {MonitorConstraint} = imports.ui.layout;
+// const {Clutter, GObject, St, GLib, Meta} = imports.gi;
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import GLib from 'gi://GLib';
+import Meta from 'gi://Meta';
+
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+
+// const {OsdWindowManager} = imports.ui.osdWindow;
+import {OsdWindowManager} from 'resource:///org/gnome/shell/ui/osdWindow.js';
+
+import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+// const {LevelBar} = Me.imports.shared.levelBar;
+import { LevelBar } from '../shared/levelBar';
+// const {MonitorConstraint} = imports.ui.layout;
+import {MonitorConstraint} from 'resource:///org/gnome/shell/ui/layout.js';
 
 const HIDE_TIMEOUT = 1500;
 const FADE_TIME = 100;
@@ -165,7 +180,7 @@ class OsdWidget extends St.Bin {
     }
 });
 
-var Extension = class Extension {
+var MyExtension = class MyExtension extends Extension {
     constructor(settings) {
         this._settings = settings;
         this._osdManagerProto = OsdWindowManager.prototype;
