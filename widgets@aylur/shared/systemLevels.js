@@ -1,7 +1,7 @@
 /* exported LevelsBox */
 export {LevelsBox};
 
-const {St, Gio, Clutter, GLib, GObject, UPowerGlib: UPower} = imports.gi;
+// const {St, Gio, Clutter, GLib, GObject, UPowerGlib: UPower} = imports.gi;
 
 import St from 'gi://St';
 import Gio from 'gi://Gio';
@@ -9,6 +9,7 @@ import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import UPower from 'gi://UPowerGlib';
+import GTop from 'gi://GTop';
 
 // const Main = imports.ui.main;
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
@@ -21,14 +22,13 @@ import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/
 // swapped with native calls to GLib
 
 // const {LevelBar} = Me.imports.shared.levelBar;
-import { LevelBar } from './levelBar';
+import { LevelBar } from './levelBar.js';
 
 // const {loadInterfaceXML} = imports.misc.fileUtils;
-import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtls.js';
+import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
-let GTop, hasGTop = true;
+let hasGTop = true;
 try {
-    GTop = imports.gi.GTop;
 } catch (e) {
     global.log(e);
     hasGTop = false;

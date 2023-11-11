@@ -16,7 +16,7 @@ import GnomeDesktop from 'gi://GnomeDesktop';
 import Shell from 'gi://Shell';
 
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 // const Main = imports.ui.main;
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';

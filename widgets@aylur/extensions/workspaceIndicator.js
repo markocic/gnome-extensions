@@ -13,7 +13,7 @@ import St from 'gi://St';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 // const PanelMenu = imports.ui.panelMenu;
-import * as PanelMenu from 'resource:///org/gnome/shell/ui/PanelMenu.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 // const Me = imports.misc.extensionUtils.getCurrentExtension();
 //
@@ -108,7 +108,7 @@ class WorkspacesIndicator extends PanelMenu.Button {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
         this.pos = [

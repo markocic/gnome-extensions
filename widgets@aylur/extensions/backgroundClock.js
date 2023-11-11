@@ -1,5 +1,4 @@
 /* exported Extension */
-export { MyExtension };
 
 // const {Clutter, GObject, GLib, St, Meta, GnomeDesktop} = imports.gi;
 import Clutter from 'gi://Clutter';
@@ -250,7 +249,7 @@ class BackgroundClock extends St.Widget {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+export class MyExtension {
     constructor(settings) {
         this._settings = settings;
         this._bgManagerProto = Background.BackgroundManager.prototype;

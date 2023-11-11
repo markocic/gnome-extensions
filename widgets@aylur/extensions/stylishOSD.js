@@ -18,7 +18,7 @@ import {OsdWindowManager} from 'resource:///org/gnome/shell/ui/osdWindow.js';
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 // const {LevelBar} = Me.imports.shared.levelBar;
-import { LevelBar } from '../shared/levelBar';
+import { LevelBar } from '../shared/levelBar.js';
 // const {MonitorConstraint} = imports.ui.layout;
 import {MonitorConstraint} from 'resource:///org/gnome/shell/ui/layout.js';
 
@@ -180,7 +180,7 @@ class OsdWidget extends St.Bin {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
         this._osdManagerProto = OsdWindowManager.prototype;

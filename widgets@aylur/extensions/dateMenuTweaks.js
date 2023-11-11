@@ -19,6 +19,7 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
+import * as dateMenu from 'resource:///org/gnome/shell/ui/dateMenu.js';
 const DateMenu = Main.panel.statusArea.dateMenu;
 // const Media = Me.imports.shared.media;
 import * as Media from '../shared/media.js';
@@ -85,7 +86,7 @@ class CustomMenu extends St.BoxLayout {
             style_class: 'datemenu-menu-custom-box',
         });
 
-        const datemenu = new imports.ui.dateMenu.DateMenuButton();
+        const datemenu = new dateMenu.DateMenuButton();
 
         const calendar = datemenu._calendar;
         const eventsItem = datemenu._eventsItem;
@@ -223,7 +224,7 @@ class CustomMenu extends St.BoxLayout {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
         this._panelBox = [

@@ -17,6 +17,7 @@ import {Slider} from 'resource:///org/gnome/shell/ui/slider.js';
 //
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
 const CACHE_PATH = `${GLib.get_user_cache_dir()}/aylur`;
 const MEDIA_CACHE = `${CACHE_PATH}/media/`;
@@ -57,7 +58,7 @@ const MprisIFace =
 
 const MprisPlayerProxy = Gio.DBusProxy.makeProxyWrapper(PlayerIFace);
 const MprisProxy = Gio.DBusProxy.makeProxyWrapper(MprisIFace);
-const DBusProxy = Gio.DBusProxy.makeProxyWrapper(imports.misc.fileUtils.loadInterfaceXML('org.freedesktop.DBus'));
+const DBusProxy = Gio.DBusProxy.makeProxyWrapper(loadInterfaceXML('org.freedesktop.DBus'));
 
 const blackListVolumeSlider = ['Spot'];
 

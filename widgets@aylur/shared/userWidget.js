@@ -2,7 +2,7 @@
 
 export {Avatar, UserName, Greetings};
 
-const {GLib, St, AccountsService, GObject} = imports.gi;
+// const {GLib, St, AccountsService, GObject} = imports.gi;
 
 import GLib from 'gi://GLib';
 import St from 'gi://St';

@@ -34,7 +34,7 @@ import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/ex
 // const ExtensionUtils = imports.misc.extensionUtils;
 // const Me = ExtensionUtils.getCurrentExtension();
 
-const ExtensionImports = {
+const ExtensionImports = [
     backgroundClock,
     batteryBar,
     dashBoard,
@@ -47,7 +47,7 @@ const ExtensionImports = {
     windowHeaderbar,
     quickSettingsTweaks,
     stylishOSD
-}
+]
 const Extensions = {
     backgroundClock: 'background-clock',
     batteryBar: 'battery-bar',
@@ -72,7 +72,7 @@ export default class MyExtension extends Extension {
             if (Object.hasOwnProperty.call(Extensions, extension)) {
                 const settings_key = Extensions[extension];
 
-                this[extension] = ExtensionImports[extensionIndex++];
+                this[extension] = new ExtensionImports[extensionIndex++].MyExtension(settings);
 
                 // this[extension] = new Me.imports.extensions[extension].Extension(settings);
                 if (settings.get_boolean(settings_key))

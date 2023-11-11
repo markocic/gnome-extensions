@@ -17,7 +17,7 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 // const {NotificationList} = Me.imports.shared.notificationList;
-import { NotificationList } from '../shared/notificationList';
+import { NotificationList } from '../shared/notificationList.js';
 
 const IconsIndicator = GObject.registerClass(
 class IconsIndicator extends St.BoxLayout {
@@ -191,7 +191,7 @@ class PanelButton extends PanelMenu.Button {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
         this._pos = [

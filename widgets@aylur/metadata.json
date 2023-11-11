@@ -4,12 +4,12 @@
   "name": "Aylur's Widgets",
   "settings-schema": "org.gnome.shell.extensions.aylurs-widgets",
   "shell-version": [
-    "44"
+    "45"
   ],
   "url": "https://github.com/Aylur/gnome-extensions",
-  "uuid": "widgets@aylur",
+  "uuid": "widgets@marko",
   "donations": {
     "kofi": "aylur"
   },
-  "version": 24
+  "version": 25
 }

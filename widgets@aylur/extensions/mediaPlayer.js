@@ -225,7 +225,7 @@ class MediaControls extends PanelMenu.Button {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._signals = [
             'media-player-offset',

@@ -17,11 +17,12 @@ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 // const Widgets = Me.imports.shared.dashWidgets;
 // const ConfigParser = Me.imports.shared.dashConfigParser;
-import Widgets from '../shared/dashWidgets.js';
-import ConfigParser from '../shared/dashConfigParser.js';
+import * as Widgets from '../shared/dashWidgets.js';
+import * as ConfigParser from '../shared/dashConfigParser.js';
 
 // const {PanelButton} = Me.imports.shared.panelButton;
 import {PanelButton} from '../shared/panelButton.js';
+import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
 
 
 // const Me = imports.misc.extensionUtils.getCurrentExtension();
@@ -29,7 +30,7 @@ import {PanelButton} from '../shared/panelButton.js';
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const DashBoardModal = GObject.registerClass(
-class DashBoardModal extends imports.ui.modalDialog.ModalDialog {
+class DashBoardModal extends ModalDialog.ModalDialog {
     _init(settings) {
         super._init({
             destroyOnClose: false,
@@ -151,7 +152,7 @@ class DashBoardModal extends imports.ui.modalDialog.ModalDialog {
             const file = Gio.File.new_for_path(`${Me.path}/config/dashboard.json`);
             let [, contents, _etag] = file.load_contents(null);
             contents instanceof Uint8Array
-                ? contents = imports.byteArray.toString(contents)
+                ? contents = new TextDecoder().decode(contents)
                 : contents = contents.toString();
 
             ConfigParser.parseJson(JSON.parse(contents), this._settings);
@@ -248,7 +249,7 @@ class DashBoardPanelButton extends PanelMenu.Button {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
         this._extension = new PanelButton({

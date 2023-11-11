@@ -1,7 +1,7 @@
 /* exported Extension */
 export {MyExtension};
 
-const {Meta} = imports.gi;
+// const {Meta} = imports.gi;
 import Meta from 'gi://Meta';
 
 // const Util = imports.misc.util;
@@ -45,7 +45,7 @@ class Window {
     }
 }
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     enable() {
         this._windows = new Map();
 

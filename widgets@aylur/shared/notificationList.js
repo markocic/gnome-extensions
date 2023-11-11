@@ -2,7 +2,7 @@
 
 export { NotificationList };
 
-const {GObject, St, Clutter, Gio} = imports.gi;
+// const {GObject, St, Clutter, Gio} = imports.gi;
 
 import GObject from 'gi://GObject';
 import St from 'gi://St';

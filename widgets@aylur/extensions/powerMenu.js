@@ -18,9 +18,9 @@ import * as SystemActions from 'resource:///org/gnome/shell/misc/systemActions.j
 // const ModalDialog = imports.ui.modalDialog;
 import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
 // const PanelMenu = imports.ui.panelMenu;
-import * as PanelMenu from 'resource:///org/gnome/shell/ui/PanelMenu.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 // const {PanelButton} = Me.imports.shared.panelButton;
-import { PanelButton } from '../shared/panelButton';
+import { PanelButton } from '../shared/panelButton.js';
 
 const PowerButton = GObject.registerClass(
 class PowerButton extends St.Button {
@@ -209,7 +209,7 @@ class PowerMenu extends PanelMenu.Button {
     }
 });
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._extension = new PanelButton({
             settings,

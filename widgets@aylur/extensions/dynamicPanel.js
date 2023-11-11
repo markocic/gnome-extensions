@@ -12,7 +12,7 @@ import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/
 
 const Panel = Main.panel;
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
     }

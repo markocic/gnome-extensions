@@ -29,12 +29,12 @@ import { NotificationList } from '../shared/notificationList.js';
 // const SystemLevels = Me.imports.shared.systemLevels;
 import * as SystemLevels from '../shared/systemLevels.js';
 // const {VolumeMixer} = Me.imports.shared.volumeMixer;
-import { VolumeMixer } from '../shared/volumeMixer';
+import { VolumeMixer } from '../shared/volumeMixer.js';
 // const {Avatar, UserName, Greetings} = Me.imports.shared.userWidget;
 import {Avatar, Greetings, UserName} from '../shared/userWidget.js';
 
 // const {loadInterfaceXML} = imports.misc.fileUtils;
-import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtls.js';
+import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
 const DisplayDeviceInterface = loadInterfaceXML('org.freedesktop.UPower.Device');
 const PowerManagerProxy = Gio.DBusProxy.makeProxyWrapper(DisplayDeviceInterface);
@@ -799,7 +799,7 @@ class QuickSettingsTweaks {
     }
 }
 
-var MyExtension = class MyExtension extends Extension {
+var MyExtension = class MyExtension {
     constructor(settings) {
         this._settings = settings;
     }

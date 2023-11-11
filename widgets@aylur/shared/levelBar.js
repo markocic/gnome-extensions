@@ -1,7 +1,7 @@
 /* exported LevelBar */
 export {LevelBar};
 
-const {Clutter, St, GObject, GLib} = imports.gi;
+// const {Clutter, St, GObject, GLib} = imports.gi;
 
 
 import GObject from 'gi://GObject';
