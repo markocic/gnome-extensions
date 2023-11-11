@@ -16,7 +16,8 @@ import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import GdkPixbuf from 'gi://GdkPixbuf';
 
-import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+// import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 // const ExtensionUtils = imports.misc.extensionUtils;
 // const Me = ExtensionUtils.getCurrentExtension();
 //

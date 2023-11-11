@@ -11,6 +11,10 @@ import * as SwitchRow from './pref/widgets.js';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
+const Me = () => {
+    return ExtensionPreferences.lookupByUUID("widgets@marko");
+};
+
 const ToggleRow = GObject.registerClass(
 class ToggleRow extends Adw.ActionRow {
     constructor(subpage, settingName, subtitle = '') {
@@ -53,7 +57,7 @@ class AboutPage extends Adw.PreferencesPage {
 
         const versionGroup = new Adw.PreferencesGroup();
         const versionRow = new Adw.ActionRow({title: _('Version:')});
-        versionRow.add_suffix(new Gtk.Label({valign: Gtk.Align.CENTER, label: `${Me.metadata.version}`}));
+        versionRow.add_suffix(new Gtk.Label({valign: Gtk.Align.CENTER, label: `${Me().metadata.version}`}));
         versionGroup.add(versionRow);
         this.add(versionGroup);
 
@@ -70,14 +74,14 @@ class AboutPage extends Adw.PreferencesPage {
         const donateRow = new Adw.ActionRow();
         donateGroup.add(donateRow);
 
-        let pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me.metadata.path}/media/prefs/kofi.png`, -1, 50, true);
+        let pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me().metadata.path}/media/prefs/kofi.png`, -1, 50, true);
         let donateImage = Gtk.Picture.new_for_pixbuf(pixbuf);
         donateRow.add_prefix(new Gtk.LinkButton({
             child: donateImage,
             uri: 'https://ko-fi.com/aylur',
         }));
 
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me.metadata.path}/media/prefs/gnome-logo.png`, -1, 50, true);
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(`${Me().metadata.path}/media/prefs/gnome-logo.png`, -1, 50, true);
         donateImage = Gtk.Picture.new_for_pixbuf(pixbuf);
         donateRow.add_suffix(new Gtk.Label({
             label: _('Also consider donating to'),

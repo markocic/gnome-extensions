@@ -28,13 +28,14 @@ import GLib from 'gi://GLib';
 import {
     SpinButtonRow, EntryRow, DropDownRow,
     SwitchRow, ColorRow, ExpanderRow,
-    PositionRow, FileChooserButton, HotkeyDialog,
+    PositionRow, FileChooserButton, HotkeyDialog
 } from './widgets.js';
 
 // const {wsNamesGroup} = Me.imports.pref.workspaces;
 import { wsNamesGroup } from './workspaces.js';
 
-import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+// import { gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 
 const MEDIA_CACHE = `${GLib.get_user_cache_dir()}/aylur/media`;
