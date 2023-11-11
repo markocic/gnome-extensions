@@ -31,9 +31,6 @@ import * as workspaceIndicator from './extensions/workspaceIndicator.js';
 
 import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-// const ExtensionUtils = imports.misc.extensionUtils;
-// const Me = ExtensionUtils.getCurrentExtension();
-
 const ExtensionImports = [
     backgroundClock,
     batteryBar,
@@ -45,7 +42,7 @@ const ExtensionImports = [
     workspaceIndicator,
     dynamicPanel,
     windowHeaderbar,
-    quickSettingsTweaks,
+    // quickSettingsTweaks,
     stylishOSD
 ]
 const Extensions = {
@@ -59,7 +56,7 @@ const Extensions = {
     workspaceIndicator: 'workspace-indicator',
     dynamicPanel: 'dynamic-panel',
     windowHeaderbar: 'window-headerbar',
-    quickSettingsTweaks: 'quick-settings-tweaks',
+    // quickSettingsTweaks: 'quick-settings-tweaks',
     stylishOSD: 'stylish-osd',
 };
 
@@ -74,7 +71,6 @@ export default class MyExtension extends Extension {
 
                 this[extension] = new ExtensionImports[extensionIndex++].MyExtension(settings);
 
-                // this[extension] = new Me.imports.extensions[extension].Extension(settings);
                 if (settings.get_boolean(settings_key))
                     this._toggleExtension(this[extension]);
 
@@ -102,8 +98,7 @@ export default class MyExtension extends Extension {
         if (!extension.enabled) {
             extension.enable();
             extension.enabled = true;
-        } else {
-            extension.disable();
+        } else { extension.disable();
             extension.enabled = false;
         }
     }

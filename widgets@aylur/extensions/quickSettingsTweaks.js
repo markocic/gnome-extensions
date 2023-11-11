@@ -831,7 +831,7 @@ var MyExtension = class MyExtension {
             this
         );
 
-        if (Main.panel.statusArea.quickSettings._system && Main.panel.statusArea.quickSettings._volume)
+        if (Main.panel.statusArea.quickSettings._system)
             this._modifySystemItem();
         else
             this._queueModifySystemItem();

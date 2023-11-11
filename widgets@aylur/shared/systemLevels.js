@@ -1,8 +1,6 @@
 /* exported LevelsBox */
 export {LevelsBox};
 
-// const {St, Gio, Clutter, GLib, GObject, UPowerGlib: UPower} = imports.gi;
-
 import St from 'gi://St';
 import Gio from 'gi://Gio';
 import Clutter from 'gi://Clutter';
@@ -11,20 +9,12 @@ import GObject from 'gi://GObject';
 import UPower from 'gi://UPowerGlib';
 import GTop from 'gi://GTop';
 
-// const Main = imports.ui.main;
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
-// const Me = imports.misc.extensionUtils.getCurrentExtension();
-// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-// const Mainloop = imports.mainloop;
-// swapped with native calls to GLib
-
-// const {LevelBar} = Me.imports.shared.levelBar;
 import { LevelBar } from './levelBar.js';
 
-// const {loadInterfaceXML} = imports.misc.fileUtils;
 import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
 const Me = () => {

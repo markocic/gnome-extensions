@@ -1,6 +1,4 @@
 /* exported init fillPreferencesWindow */
-
-export { fillPreferencesWindow };
 // const {Adw, Gtk, Gio, GObject, GdkPixbuf} = imports.gi;
 import Adw from 'gi://Adw';
 import Gtk from 'gi://Gtk';
@@ -8,21 +6,10 @@ import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import GdkPixbuf from 'gi://GdkPixbuf';
 
-// const ExtensionUtils = imports.misc.extensionUtils;
-// const Me = ExtensionUtils.getCurrentExtension();
-import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
-let Me = Extension.lookupByUUID('widgets@marko');
-
-import * as Pages from '../pref/pages.js';
-// const Pages = Me.imports.pref.pages;
-// const {SwitchRow} = Me.imports.pref.widgets;
-import * as SwitchRow from '../pref/widgets.js';
+import * as Pages from './pref/pages.js';
+import * as SwitchRow from './pref/widgets.js';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
-// const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
-
-function init() {
-}
 
 const ToggleRow = GObject.registerClass(
 class ToggleRow extends Adw.ActionRow {
@@ -133,7 +120,7 @@ class MainPage extends Adw.PreferencesPage {
         group.add(new ToggleRow(new Pages.MediaPlayerPage(settings), 'media-player'));
         group.add(new ToggleRow(new Pages.PowerMenuPage(settings), 'power-menu'));
         group.add(new ToggleRow(new Pages.StylishOSDPage(settings), 'stylish-osd'));
-        group.add(new ToggleRow(new Pages.QuickSettingsTweaksPage(settings), 'quick-settings-tweaks'));
+        // group.add(new ToggleRow(new Pages.QuickSettingsTweaksPage(settings), 'quick-settings-tweaks'));
         group.add(new ToggleRow(new Pages.WorkspaceIndicatorPage(settings), 'workspace-indicator'));
     }
 });
