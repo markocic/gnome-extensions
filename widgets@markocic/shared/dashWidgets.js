@@ -47,7 +47,7 @@ import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/
 // const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 const Me = () => {
-    return Extension.lookupByUUID("widgets@marko");
+    return Extension.lookupByUUID("widgets@markocic");
 };
 
 const DashWidget = GObject.registerClass(

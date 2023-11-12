@@ -12,7 +12,7 @@ import * as SwitchRow from './pref/widgets.js';
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 const Me = () => {
-    return ExtensionPreferences.lookupByUUID("widgets@marko");
+    return ExtensionPreferences.lookupByUUID("widgets@markocic");
 };
 
 const ToggleRow = GObject.registerClass(

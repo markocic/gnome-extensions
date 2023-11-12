@@ -17,7 +17,7 @@ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 // const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Me = () => {
-    return Extension.lookupByUUID("widgets@marko");
+    return Extension.lookupByUUID("widgets@markocic");
 };
 
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;

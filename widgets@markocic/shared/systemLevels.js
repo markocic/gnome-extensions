@@ -18,7 +18,7 @@ import { LevelBar } from './levelBar.js';
 import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
 const Me = () => {
-    return Extension.lookupByUUID("widgets@marko");
+    return Extension.lookupByUUID("widgets@markocic");
 };
 
 let hasGTop = true;
