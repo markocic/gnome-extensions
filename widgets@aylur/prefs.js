@@ -110,16 +110,17 @@ class MainPage extends Adw.PreferencesPage {
             icon_name: 'application-x-addon-symbolic',
         });
 
-        const settings = ExtensionUtils.getSettings();
+        const settings = Me().getSettings();
         const group = new Adw.PreferencesGroup();
         this.add(group);
 
+        // TODO try to fix QuickSettings and Hide Window Headerbars in the future
         group.add(new ToggleRow(new Pages.BackgroundClockPage(settings), 'background-clock'));
         group.add(new ToggleRow(new Pages.BatteryBarPage(settings), 'battery-bar'));
         group.add(new ToggleRow(new Pages.DashBoardPage(settings), 'dash-board'));
         group.add(new ToggleRow(new Pages.DateMenuTweakPage(settings), 'date-menu-tweaks'));
         group.add(new ToggleRow(new Pages.DynamicPanelPage(settings), 'dynamic-panel'));
-        group.add(new SwitchRow(_('Hide Window Headerbars'), settings, 'window-headerbar'));
+        // group.add(new SwitchRow.SwitchRow((_('Hide Window Headerbars'), settings, 'window-headerbar')));
         group.add(new ToggleRow(new Pages.NotificationIndicatorPage(settings), 'notification-indicator'));
         group.add(new ToggleRow(new Pages.MediaPlayerPage(settings), 'media-player'));
         group.add(new ToggleRow(new Pages.PowerMenuPage(settings), 'power-menu'));

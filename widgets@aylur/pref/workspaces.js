@@ -18,7 +18,6 @@ const WORKSPACE_KEY = 'workspace-names';
 // const ExtensionUtils = imports.misc.extensionUtils;
 // const Me = ExtensionUtils.getCurrentExtension();
 // const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
-import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 class NewItem extends GObject.Object {}
 GObject.registerClass(NewItem);
@@ -135,7 +134,7 @@ var wsNamesGroup = class WorkspaceSettingsWidget extends Adw.PreferencesGroup {
 
     constructor() {
         super({
-            title: _('Workspace Names'),
+            title: 'Workspace Names',
         });
 
         this._workspaces = new WorkspacesList();
