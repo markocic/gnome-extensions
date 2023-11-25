@@ -19,6 +19,10 @@ import {Slider} from 'resource:///org/gnome/shell/ui/slider.js';
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 import {loadInterfaceXML} from 'resource:///org/gnome/shell/misc/fileUtils.js';
 
+const Me = () => {
+    return Extension.lookupByUUID("widgets@markocic");
+};
+
 const CACHE_PATH = `${GLib.get_user_cache_dir()}/aylur`;
 const MEDIA_CACHE = `${CACHE_PATH}/media/`;
 
@@ -343,7 +347,7 @@ class PlayerWidget extends St.BoxLayout {
         `;
         const noCover = `
             border-radius: ${this.roundness}px;
-            background-image: url("file://${Me.path}/media/missing-cover-symbolic.svg");
+            background-image: url("file://${Me().metadata.path}/media/missing-cover-symbolic.svg");
         `;
 
         if (this.player.trackCoverUrl === '' || this.player.trackCoverUrl === '_') {
